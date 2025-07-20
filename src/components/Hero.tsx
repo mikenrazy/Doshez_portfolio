@@ -1,21 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import { Github, Linkedin, Mail, Download, ChevronDown } from 'lucide-react';
 import ThreeScene from './ThreeScene';
-import { usePortfolioData } from '../hooks/usePortfolioData';
 import './Hero.css';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
-  const { getContent } = usePortfolioData();
-
-  // Get dynamic content
-  const personalInfo = getContent('hero', 'personal_info', {
-    name: 'Michael Odongo',
-    title: 'IT Specialist',
-    roles: ['IT Specialist', 'Tech Lead', 'Full-Stack Developer'],
-    description: 'Experienced IT specialist with a passion for designing beautiful and functional systems.',
-    profile_image: '/api/placeholder/400/400'
-  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,20 +36,19 @@ const Hero: React.FC = () => {
               Hello, I'm
             </div>
             <h1 className="hero-title">
-              {personalInfo.name}
+              Michael Odongo
             </h1>
             <div className="hero-roles">
-              {personalInfo.roles.map((role: string, index: number) => (
-                <React.Fragment key={role}>
-                  <span className="role-text">{role}</span>
-                  {index < personalInfo.roles.length - 1 && (
-                    <span className="role-separator">•</span>
-                  )}
-                </React.Fragment>
-              ))}
+              <span className="role-text">IT Specialist</span>
+              <span className="role-separator">•</span>
+              <span className="role-text">Tech Lead</span>
+              <span className="role-separator">•</span>
+              <span className="role-text">Full-Stack Developer</span>
             </div>
             <p className="hero-description">
-              {personalInfo.description}
+              Experienced IT specialist with a passion for designing beautiful and functional systems. 
+              Creative developer and innovator from Kenya, specializing in live streaming, 
+              system administration, and cutting-edge web technologies.
             </p>
             
             <div className="hero-actions">
